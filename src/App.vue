@@ -1,15 +1,38 @@
 <template>
+  <TheHeader v-if = 'showHeader'/>
+
+  <div v-show = 'showName'>
+    Nome: {{ firstName }} <br>
+    Sobrenome: {{ lastName }}
+  </div>
+
+  <div v-if = "accessLevel === 'admin'">Admionistrador</div>
+  <div v-else-if="accessLevel === 'marketing'" >Equipe de Marketing</div>
+  <div v-else>User</div>
+
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="Bem vindo ao seu APP em Vue.js App"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import TheHeader from './components/TheHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    // eslint-disable-next-line vue/no-unused-components
+    TheHeader
+  },
+  data(){
+    return {
+      showHeader: true,
+      firstName: 'Jon',
+      lastName: 'Snow',
+      showName: true,
+      accessLevel: 'marketing'
+    }
   }
 }
 </script>
@@ -23,4 +46,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
