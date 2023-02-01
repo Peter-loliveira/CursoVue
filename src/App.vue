@@ -1,22 +1,48 @@
 <template>
   <TheHeader v-if="showHeader" />
 
-  <div v-show="showName">
-    Nome: {{ firstName }} <br />
-    Sobrenome: {{ lastName }}
+  <div>
+    <h1>
+      v-show
+    </h1>
+    <div v-show="showName">
+      Nome: {{ firstName }} <br />
+      Sobrenome: {{ lastName }}
+    </div>
   </div>
-
-  <div v-if="accessLevel === 'admin'">Admionistrador</div>
-  <div v-else-if="accessLevel === 'marketing'">Equipe de Marketing</div>
-  <div v-else>User</div>
-
+  <hr>
+  
+  <div>
+    <h1>
+      v-if / v-else-if / v-else
+    </h1>
+    <div v-if="accessLevel === 'admin'">Admionistrador</div>
+    <div v-else-if="accessLevel === 'marketing'">Equipe de Marketing</div>
+    <div v-else>User</div>
+  </div>
+  <hr>
+  
   <br />
   <div>
+    <h1>v-for</h1>
     <select>
       <Option id="firstItem">Selecione uma CICOM</Option>
-      <Option v-for="cicom in cicoms" v-bind:key="cicom.index">{{cicom.cicom}} - {{ cicom.circuito }}</Option>
+      <Option v-for="cicom  in cicoms" v-bind:key="cicom.index">{{cicom.cicom}} - {{ cicom.circuito }}</Option>
     </select>
   </div>
+  
+  <hr>
+  <div>
+    <h1>
+      v-bind
+    </h1>
+    <div>
+      <img :src="imgSrc" :alt="imgAlt" class="smallImg">
+      
+    </div>
+  </div>
+  
+  <hr>
 
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Bem vindo ao seu APP em Vue.js App" /> -->
@@ -40,6 +66,8 @@ export default {
       lastName: "Snow",
       showName: true,
       accessLevel: "marketing",
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Doctor_Who_Logo_1973-1980.svg',
+      imgAlt:'Foto do Jon Snow',
       cicoms: [
         {
           cicom: "Alagoinhas",
@@ -211,5 +239,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.smallImg{
+  width: 10rem ;
 }
 </style>
