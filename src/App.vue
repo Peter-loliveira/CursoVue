@@ -2,7 +2,7 @@
   <TheHeader v-if="showHeader" />
 
   <div>
-    <h1>V-Model</h1>
+    <h1 class="titulos">V-Model</h1>
       <label for="">Nome: </label>
       <input v-model="nameModel" type="text">
       <br>
@@ -16,17 +16,32 @@
         <option value="Opção 4">Opção 4</option>
         <option value="Opção 5">Opção 5</option>
       </select>
-      <input type="text" v-model = "selecao">
+      <input  type="text" v-model = "selecao">
       <br>
+
+      <div>
+        <label for="">Opções</label>
+        <input v-model="colors" type="checkbox" name="" id="" value="Amarelo">
+        Amarelo
+        <input v-model="colors" type="checkbox" name="" id="" value="Azul">
+        Azul
+        <input v-model="colors" type="checkbox" name="" id="" value="Vermelho">
+        Vermelho
+        <input v-model="colors" type="checkbox" name="" id="" value="Preto">
+        Branco
+        <input v-model="colors" type="checkbox" name="" id="" value="Branco">
+        Branco
+        <p>Cores Selecionadas</p>
+        <input class="coresSelecionadas" type="text" :value="colors">
+      </div>
+      
     
   </div>
 
   <hr>
 
   <div>
-    <h1>
-      v-show
-    </h1>
+    <h1 class="titulos"> v-show </h1>
     <div v-show="showName">
       Nome: {{ firstName }} <br />
       Sobrenome: {{ lastName }}
@@ -35,9 +50,7 @@
   <hr>
   
   <div>
-    <h1>
-      v-if / v-else-if / v-else
-    </h1>
+    <h1 class="titulos"> v-if / v-else-if / v-else </h1>
     <div v-if="accessLevel === 'admin'">Admionistrador</div>
     <div v-else-if="accessLevel === 'marketing'">Equipe de Marketing</div>
     <div v-else>User</div>
@@ -46,7 +59,7 @@
   
   <br />
   <div>
-    <h1>v-for</h1>
+    <h1 class="titulos">v-for</h1>
     <select>
       <Option id="firstItem">Selecione uma CICOM</Option>
       <Option v-for="cicom  in cicoms" v-bind:key="cicom.index">{{cicom.cicom}} - {{ cicom.circuito }}</Option>
@@ -55,12 +68,11 @@
   <hr>
   
   <div>
-    <h1>
-      v-bind
-    </h1>
+    <h1 class="titulos">V-Bind</h1>
     <div>
       <input v-model = "imgSrc" type="text">
       <br>
+      
       <img :src="imgSrc" :alt="imgAlt" class="smallImg">
     </div>
   </div>
@@ -102,6 +114,7 @@ export default {
       isHome: false,
       nameModel: 'Seu Nome',
       selecao: '',
+      colors:[],
       cicoms: [
         {
           cicom: "Alagoinhas",
@@ -308,4 +321,16 @@ button{
 button:hover{
   background-color: black;
 }
+
+.coresSelecionadas {
+  width: 50%;
+}
+
+.titulos{
+  color: gray;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
 </style>
