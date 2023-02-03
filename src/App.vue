@@ -2,6 +2,28 @@
   <TheHeader v-if="showHeader" />
 
   <div>
+    <h1>V-Model</h1>
+      <label for="">Nome: </label>
+      <input v-model="nameModel" type="text">
+      <br>
+      <label for="">{{ nameModel }}</label>
+      <br>
+      <select v-model = "selecao" name="" id="">
+        <option value="">Selecione uma opção</option>
+        <option value="Opção 1">Opção 1</option>
+        <option value="Opção 2">Opção 2</option>
+        <option value="Opção 3">Opção 3</option>
+        <option value="Opção 4">Opção 4</option>
+        <option value="Opção 5">Opção 5</option>
+      </select>
+      <input type="text" v-model = "selecao">
+      <br>
+    
+  </div>
+
+  <hr>
+
+  <div>
     <h1>
       v-show
     </h1>
@@ -37,6 +59,8 @@
       v-bind
     </h1>
     <div>
+      <input v-model = "imgSrc" type="text">
+      <br>
       <img :src="imgSrc" :alt="imgAlt" class="smallImg">
     </div>
   </div>
@@ -76,6 +100,8 @@ export default {
       imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Doctor_Who_Logo_1973-1980.svg',
       imgAlt:'Foto do Jon Snow',
       isHome: false,
+      nameModel: 'Seu Nome',
+      selecao: '',
       cicoms: [
         {
           cicom: "Alagoinhas",
