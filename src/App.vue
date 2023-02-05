@@ -1,91 +1,113 @@
 <template>
+  <h1 class="titulos">V-Show</h1>
   <TheHeader v-if="showHeader" />
+  <hr />
+  <h1 class="titulos">Eventos</h1>
+  <h2>Formulário</h2>
+  <form 
+    action="https://www.google.com.br" 
+    
+    @submit.prevent="submeter" 
+    >
+    <input type="text" @keypress.enter="submeter">
+    <br>
+    <button type="submit">Enviar</button>
+  </form>
 
+  <hr />
   <div>
     <h1 class="titulos">V-Model</h1>
-      <label for="">Nome: </label>
-      <input v-model="nameModel" type="text">
-      <br>
-      <label for="">{{ nameModel }}</label>
-      <br>
-      <select v-model = "selecao" name="" id="">
-        <option value="">Selecione uma opção</option>
-        <option value="Opção 1">Opção 1</option>
-        <option value="Opção 2">Opção 2</option>
-        <option value="Opção 3">Opção 3</option>
-        <option value="Opção 4">Opção 4</option>
-        <option value="Opção 5">Opção 5</option>
-      </select>
-      <input  type="text" v-model = "selecao">
-      <br>
+    <label for="">Nome: </label>
+    <input v-model="nameModel" type="text" />
+    <br />
+    <label for="">{{ nameModel }}</label>
+    <br />
+    <select v-model="selecao" name="" id="">
+      <option value="">Selecione uma opção</option>
+      <option value="Opção 1">Opção 1</option>
+      <option value="Opção 2">Opção 2</option>
+      <option value="Opção 3">Opção 3</option>
+      <option value="Opção 4">Opção 4</option>
+      <option value="Opção 5">Opção 5</option>
+    </select>
+    <input type="text" v-model="selecao" />
+    <br />
 
-      <div>
-        <label for="">Opções</label>
-        <input v-model="colors" type="checkbox" name="" id="" value="Amarelo">
-        Amarelo
-        <input v-model="colors" type="checkbox" name="" id="" value="Azul">
-        Azul
-        <input v-model="colors" type="checkbox" name="" id="" value="Vermelho">
-        Vermelho
-        <input v-model="colors" type="checkbox" name="" id="" value="Preto">
-        Branco
-        <input v-model="colors" type="checkbox" name="" id="" value="Branco">
-        Branco
-        <p>Cores Selecionadas</p>
-        <input class="coresSelecionadas" type="text" :value="colors">
-      </div>
-      
-    
+    <div>
+      <label for="">Opções</label>
+      <input v-model="colors" type="checkbox" name="" id="" value="Amarelo" />
+      Amarelo
+      <input v-model="colors" type="checkbox" name="" id="" value="Azul" />
+      Azul
+      <input v-model="colors" type="checkbox" name="" id="" value="Vermelho" />
+      Vermelho
+      <input v-model="colors" type="checkbox" name="" id="" value="Preto" />
+      Branco
+      <input v-model="colors" type="checkbox" name="" id="" value="Branco" />
+      Branco
+      <p>Cores Selecionadas</p>
+      <input class="coresSelecionadas" type="text" :value="colors" />
+    </div>
   </div>
-
-  <hr>
+  <hr />
 
   <div>
-    <h1 class="titulos"> v-show </h1>
+    <h1 class="titulos">v-show</h1>
     <div v-show="showName">
       Nome: {{ firstName }} <br />
       Sobrenome: {{ lastName }}
     </div>
   </div>
-  <hr>
-  
+  <hr />
+
   <div>
-    <h1 class="titulos"> v-if / v-else-if / v-else </h1>
+    <h1 class="titulos">v-if / v-else-if / v-else</h1>
     <div v-if="accessLevel === 'admin'">Admionistrador</div>
     <div v-else-if="accessLevel === 'marketing'">Equipe de Marketing</div>
     <div v-else>User</div>
   </div>
-  <hr>
-  
+  <hr />
+
   <br />
   <div>
     <h1 class="titulos">v-for</h1>
     <select>
-      <Option id="firstItem">Selecione uma CICOM</Option>
-      <Option v-for="cicom  in cicoms" v-bind:key="cicom.index">{{cicom.cicom}} - {{ cicom.circuito }}</Option>
+      <option id="firstItem">Selecione uma CICOM</option>
+      <option 
+        v-for="cicom in cicoms" v-bind:key="cicom.index">
+        {{ cicom.cicom }} - {{ cicom.circuito }}
+      </option>
     </select>
   </div>
-  <hr>
-  
+  <hr />
+
   <div>
     <h1 class="titulos">V-Bind</h1>
     <div>
-      <input v-model = "imgSrc" type="text">
-      <br>
-      
-      <img :src="imgSrc" :alt="imgAlt" class="smallImg">
+      <input v-model="imgSrc" type="text" />
+      <br />
+
+      <img :src="imgSrc" :alt="imgAlt" class="smallImg" />
     </div>
   </div>
-  <hr>
+  <hr />
 
   <div>
     <button @click="changeClass">Mudar Classe</button>
-      <h1 :class="{'title': true, 'title-home': isHome}" >Classe dinâmica</h1>
+    <h1 :class="{ title: true, 'title-home': isHome }">Classe dinâmica</h1>
 
-      <p :class="['title', {'title-home': isHome}]">Mussum Ipsum, cacilds vidis litro abertis. Per aumento de cachacis, eu reclamis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo! Suco de cevadiss deixa as pessoas mais interessantis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per.
-      Mé faiz elementum girarzis, nisi eros vermeio. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis. Vehicula non. Ut sed ex eros. Vivamus sit amet nibh non tellus tristique interdum.</p>
-    </div>
-  <hr>
+    <p :class="['title', { 'title-home': isHome }]">
+      Mussum Ipsum, cacilds vidis litro abertis. Per aumento de cachacis, eu
+      reclamis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis
+      que eu levo! Suco de cevadiss deixa as pessoas mais interessantis. Admodum
+      accumsan disputationi eu sit. Vide electram sadipscing et per. Mé faiz
+      elementum girarzis, nisi eros vermeio. Si u mundo tá muito paradis? Toma
+      um mé que o mundo vai girarzis! Nec orci ornare consequat. Praesent
+      lacinia ultrices consectetur. Sed non ipsum felis. Vehicula non. Ut sed ex
+      eros. Vivamus sit amet nibh non tellus tristique interdum.
+    </p>
+  </div>
+  <hr />
 
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Bem vindo ao seu APP em Vue.js App" /> -->
@@ -109,12 +131,12 @@ export default {
       lastName: "Snow",
       showName: true,
       accessLevel: "marketing",
-      imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Doctor_Who_Logo_1973-1980.svg',
-      imgAlt:'Foto do Jon Snow',
+      imgSrc: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Doctor_Who_Logo_1973-1980.svg",
+      imgAlt: "Foto do Jon Snow",
       isHome: false,
-      nameModel: 'Seu Nome',
-      selecao: '',
-      colors:[],
+      nameModel: "Seu Nome",
+      selecao: "",
+      colors: [],
       cicoms: [
         {
           cicom: "Alagoinhas",
@@ -276,12 +298,13 @@ export default {
     };
   },
   methods: {
-    changeClass: function () {
-      this.isHome = !this.isHome
+    changeClass: () => this.isHome = !this.isHome,
+    submeter: (event) => {
+      alert('Formulário Enviado');
+      console.log(event);
     }
-  }
+  },
 };
-
 </script>
 
 <style>
@@ -294,20 +317,20 @@ export default {
   margin-top: 60px;
 }
 
-.smallImg{
-  width: 10rem ;
+.smallImg {
+  width: 10rem;
 }
 
 .title {
   color: blue;
   font-size: 20px;
 }
-.title-home{
+.title-home {
   color: green;
   font-size: 40px;
 }
 
-button{
+button {
   font-size: 15px;
   font-weight: bold;
   color: #fff;
@@ -318,7 +341,7 @@ button{
   width: 150px;
   height: 40px;
 }
-button:hover{
+button:hover {
   background-color: black;
 }
 
@@ -326,11 +349,9 @@ button:hover{
   width: 50%;
 }
 
-.titulos{
+.titulos {
   color: gray;
   font-size: 30px;
   font-weight: bold;
 }
-
-
 </style>
