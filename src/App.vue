@@ -2,48 +2,52 @@
   <h1 class="titulos">V-Show</h1>
   <TheHeader v-if="showHeader" />
   <hr />
-  
+
   <div>
-    <h1 class="titulos">Propriedades Computadas</h1>
-    {{ fullName }}
-    <br>
-    <h2>Cicoms RG4</h2>
-      <ul>
-        <li>CICOM / CIRCUITO</li>
-        
-        <li v-for = "cicom in cicomRG4" :key="cicom.circuito">
-          <input type="checkbox" v-model = "cicom.RG">
-          {{cicom.cicom}} / <b>{{ cicom.circuito }}</b>
-        </li>
-      </ul>
-      <h2>Cicoms RG3</h2>
-      <ul>
-        <li>CICOM / CIRCUITO</li>
-        <li v-for = "cicom in cicomRG3" :key="cicom.circuito">
-          <input type="checkbox" v-model = "cicom.RG">
-          {{cicom.cicom}}  / <b> {{ cicom.circuito }}</b>
-        </li>
-      </ul>
-    
+    <h1 class="titulos">Watch</h1>
+    <input type="text"
+      v-model = "nameWatch"
+    >
+    <h2>{{ nameWatch }}</h2>
 
   </div>
   <hr>
 
   <div>
+    <h1 class="titulos">Propriedades Computadas</h1>
+    {{ fullName }}
+    <br />
+
+    <h2>Cicoms RG4</h2>
+    <ul>
+      <li>CICOM / CIRCUITO</li>
+      <li v-for="cicom in cicomRG4" :key="cicom.circuito">
+        <input type="checkbox" v-model="cicom.RG" />
+        {{ cicom.cicom }} / <b>{{ cicom.circuito }}</b>
+      </li>
+    </ul>
+    <h2>Cicoms RG3</h2>
+    <ul>
+      <li>CICOM / CIRCUITO</li>
+      <li v-for="cicom in cicomRG3" :key="cicom.circuito">
+        <input type="checkbox" v-model="cicom.RG" />
+        {{ cicom.cicom }} / <b> {{ cicom.circuito }}</b>
+      </li>
+    </ul>
+  </div>
+  <hr />
+
+  <div>
     <h1 class="titulos">Eventos</h1>
     <h2>Formulário</h2>
-    <form 
-    action="https://www.google.com.br" 
-    
-    @submit.prevent="submeter" 
-    >
-    <input type="text" @keypress.enter="submeter">
-    <br>
-    <button type="submit">Enviar</button>
-  </form>
-</div>
-
+    <form action="https://www.google.com.br" @submit.prevent="submeter">
+      <input type="text" @keypress.enter="submeter" />
+      <br />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
   <hr />
+
   <div>
     <h1 class="titulos">V-Model</h1>
     <label for="">Nome: </label>
@@ -101,8 +105,7 @@
     <h1 class="titulos">v-for</h1>
     <select>
       <option id="firstItem">Selecione uma CICOM</option>
-      <option 
-        v-for="cicom in cicoms" v-bind:key="cicom.index">
+      <option v-for="cicom in cicoms" v-bind:key="cicom.index">
         {{ cicom.cicom }} - {{ cicom.circuito }}
       </option>
     </select>
@@ -161,7 +164,8 @@ export default {
       },
       showName: true,
       accessLevel: "marketing",
-      imgSrc: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Doctor_Who_Logo_1973-1980.svg",
+      imgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/7/7e/Doctor_Who_Logo_1973-1980.svg",
       imgAlt: "Foto do Jon Snow",
       isHome: false,
       nameModel: "Seu Nome",
@@ -325,26 +329,42 @@ export default {
           Tel: "(77) 3420-8800",
         },
       ],
+      nameWatch: '',
     };
   },
+
   methods: {
-    changeClass: () => this.isHome = !this.isHome,
+    changeClass: () => (this.isHome = !this.isHome),
     submeter: (event) => {
-      alert('Formulário Enviado');
+      alert("Formulário Enviado");
       console.log(event);
+    },
+    //metodo a ser chamado pela propriedade Watch
+    saveName: (nome) => {
+      if(nome.length >= 5){
+        alert(nome)
+      }
     }
   },
+
   computed: {
-    fullName(){
-      return `${this.user.firstName} ${this.user.lastName}`
+    fullName() {
+      return `${this.user.firstName} ${this.user.lastName}`;
     },
-    cicomRG4(){
-      return this.cicoms.filter(cicom => cicom.RG)
+    cicomRG4() {
+      return this.cicoms.filter((cicom) => cicom.RG);
     },
-    cicomRG3(){
-      return this.cicoms.filter(cicom => !cicom.RG)
+    cicomRG3() {
+      return this.cicoms.filter((cicom) => !cicom.RG);
     },
   },
+  
+  watch: {
+    nameWatch(newValue) {
+      this.saveName(newValue)
+    }
+     
+  }
 };
 </script>
 
