@@ -10,6 +10,13 @@
     >
     <h2>{{ nameWatch }}</h2>
 
+    <select v-model = "pageCount">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+    <br>
+    <label>{{ pageCount }}</label>
   </div>
   <hr>
 
@@ -157,6 +164,7 @@ export default {
   },
   data() {
     return {
+      pageCount: 5,
       showHeader: true,
       user: {
         firstName: "Peter",
@@ -344,6 +352,9 @@ export default {
       if(nome.length >= 5){
         alert(nome)
       }
+    },
+    changePage(value){
+      alert(`Quantidade de páginas ${value} selecionadas!`)
     }
   },
 
@@ -360,10 +371,13 @@ export default {
   },
   
   watch: {
+    // Propriedades que são observadas e chamam metodos
     nameWatch(newValue) {
       this.saveName(newValue)
-    }
-     
+    },
+    pageCount(){
+      this.changePage(this.pageCount)
+    },
   }
 };
 </script>
