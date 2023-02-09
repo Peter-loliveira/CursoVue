@@ -1,5 +1,6 @@
 <template>
   <div class="cabecalho">este é o componente <b> Header </b> importado</div>
+  <hr>
 </template>
 
 <script>
