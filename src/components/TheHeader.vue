@@ -1,5 +1,7 @@
 <template>
-  <div class="cabecalho">este é o componente <b> Header </b> importado</div>
+  <h1 class="titulos">V-Show</h1>
+  <div class="cabecalho">
+    este é o componente <b> Header </b> importado</div>
   <hr>
 </template>
 

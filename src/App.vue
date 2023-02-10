@@ -1,20 +1,9 @@
 <template>
-  <h1 class="titulos">V-Show</h1>
   <TheHeader v-if="showHeader" />
   <CompVbind />
   <CompWatch />
   <CompPropsComputeds />
-
-  <div>
-    <h1 class="titulos">Eventos</h1>
-    <h2>Formulário</h2>
-    <form action="https://www.google.com.br" @submit.prevent="submeter">
-      <input type="text" @keypress.enter="submeter" />
-      <br />
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-  <hr />
+  <CompEvents />
 
   <div>
     <h1 class="titulos">V-Model</h1>
@@ -35,17 +24,50 @@
     <br />
 
     <div>
-      <label for="">Opções</label>
-      <input v-model="colors" type="checkbox" name="" id="" value="Amarelo" />
-      Amarelo
-      <input v-model="colors" type="checkbox" name="" id="" value="Azul" />
-      Azul
-      <input v-model="colors" type="checkbox" name="" id="" value="Vermelho" />
-      Vermelho
-      <input v-model="colors" type="checkbox" name="" id="" value="Preto" />
-      Branco
-      <input v-model="colors" type="checkbox" name="" id="" value="Branco" />
-      Branco
+      <ul>
+        <li>
+          <h3>Opções de Cores:</h3>
+        </li>
+        <li>
+          <input
+            v-model="colors"
+            type="checkbox"
+            name=""
+            id=""
+            value="Amarelo"
+          />
+          Amarelo
+        </li>
+        <li></li>
+        <li>
+          <input v-model="colors" type="checkbox" name="" id="" value="Azul" />
+          Azul
+        </li>
+        <li>
+          <input
+            v-model="colors"
+            type="checkbox"
+            name=""
+            id=""
+            value="Vermelho"
+          />
+          Vermelho
+        </li>
+        <li>
+          <input v-model="colors" type="checkbox" name="" id="" value="Preto" />
+          Branco
+        </li>
+        <li>
+          <input
+            v-model="colors"
+            type="checkbox"
+            name=""
+            id=""
+            value="Branco"
+          />
+          Branco
+        </li>
+      </ul>
       <p>Cores Selecionadas</p>
       <input class="coresSelecionadas" type="text" :value="colors" />
     </div>
@@ -79,8 +101,6 @@
     </select>
   </div>
   <hr />
-  
-  
 
   <div>
     <button @click="changeClass">Mudar Classe</button>
@@ -105,6 +125,7 @@ import TheHeader from "./components/TheHeader.vue";
 import CompVbind from "./components/CompVbind.vue";
 import CompWatch from "./components/CompWatch.vue";
 import CompPropsComputeds from "./components/CompPropsComputeds.vue";
+import CompEvents from "./components/CompEvents.vue";
 
 export default {
   name: "App",
@@ -113,6 +134,7 @@ export default {
     CompVbind,
     CompWatch,
     CompPropsComputeds,
+    CompEvents,
   },
   data() {
     return {
@@ -127,17 +149,11 @@ export default {
       nameModel: "Seu Nome",
       selecao: "",
       colors: [],
-      
-      
     };
   },
 
   methods: {
     changeClass: () => (this.isHome = !this.isHome),
-    submeter: (event) => {
-      alert("Formulário Enviado");
-      console.log(event);
-    },
   },
 
   computed: {
@@ -151,16 +167,16 @@ export default {
       return this.cicoms.filter((cicom) => !cicom.RG);
     },
   },
-  
+
   watch: {
     // Propriedades que são observadas e chamam metodos
     nameWatch(newValue) {
-      this.saveName(newValue)
+      this.saveName(newValue);
     },
-    pageCount(){
-      this.changePage(this.pageCount)
+    pageCount() {
+      this.changePage(this.pageCount);
     },
-  }
+  },
 };
 </script>
 
