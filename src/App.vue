@@ -1,95 +1,12 @@
 <template>
   <TheHeader v-if="showHeader" />
+  <CompVshow />
   <CompVbind />
+  <CompVmodel />
   <CompWatch />
-  <CompPropsComputeds />
   <CompEvents />
-
-  <div>
-    <h1 class="titulos">V-Model</h1>
-    <label for="">Nome: </label>
-    <input v-model="nameModel" type="text" />
-    <br />
-    <label for="">{{ nameModel }}</label>
-    <br />
-    <select v-model="selecao" name="" id="">
-      <option value="">Selecione uma opção</option>
-      <option value="Opção 1">Opção 1</option>
-      <option value="Opção 2">Opção 2</option>
-      <option value="Opção 3">Opção 3</option>
-      <option value="Opção 4">Opção 4</option>
-      <option value="Opção 5">Opção 5</option>
-    </select>
-    <input type="text" v-model="selecao" />
-    <br />
-
-    <div>
-      <ul>
-        <li>
-          <h3>Opções de Cores:</h3>
-        </li>
-        <li>
-          <input
-            v-model="colors"
-            type="checkbox"
-            name=""
-            id=""
-            value="Amarelo"
-          />
-          Amarelo
-        </li>
-        <li></li>
-        <li>
-          <input v-model="colors" type="checkbox" name="" id="" value="Azul" />
-          Azul
-        </li>
-        <li>
-          <input
-            v-model="colors"
-            type="checkbox"
-            name=""
-            id=""
-            value="Vermelho"
-          />
-          Vermelho
-        </li>
-        <li>
-          <input v-model="colors" type="checkbox" name="" id="" value="Preto" />
-          Branco
-        </li>
-        <li>
-          <input
-            v-model="colors"
-            type="checkbox"
-            name=""
-            id=""
-            value="Branco"
-          />
-          Branco
-        </li>
-      </ul>
-      <p>Cores Selecionadas</p>
-      <input class="coresSelecionadas" type="text" :value="colors" />
-    </div>
-  </div>
-  <hr />
-
-  <div>
-    <h1 class="titulos">v-show</h1>
-    <div v-show="showName">
-      Nome: {{ this.user.firstName }} <br />
-      Sobrenome: {{ this.user.lastName }}
-    </div>
-  </div>
-  <hr />
-
-  <div>
-    <h1 class="titulos">v-if / v-else-if / v-else</h1>
-    <div v-if="accessLevel === 'admin'">Admionistrador</div>
-    <div v-else-if="accessLevel === 'marketing'">Equipe de Marketing</div>
-    <div v-else>User</div>
-  </div>
-  <hr />
+  <CompPropsComputeds />
+  <CompCondicionais />
 
   <div>
     <h1 class="titulos">v-for</h1>
@@ -126,6 +43,9 @@ import CompVbind from "./components/CompVbind.vue";
 import CompWatch from "./components/CompWatch.vue";
 import CompPropsComputeds from "./components/CompPropsComputeds.vue";
 import CompEvents from "./components/CompEvents.vue";
+import CompVmodel from "./components/CompVmodel.vue";
+import CompVshow from "./components/CompVshow.vue";
+import CompCondicionais from "./components/CompCondicionais.vue";
 
 export default {
   name: "App",
@@ -135,6 +55,9 @@ export default {
     CompWatch,
     CompPropsComputeds,
     CompEvents,
+    CompVmodel,
+    CompVshow,
+    CompCondicionais,
   },
   data() {
     return {
@@ -144,7 +67,7 @@ export default {
         lastName: "Lange",
       },
       showName: true,
-      accessLevel: "marketing",
+      // accessLevel: "marketing",
       isHome: false,
       nameModel: "Seu Nome",
       selecao: "",
