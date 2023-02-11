@@ -209,4 +209,8 @@ li{
     text-align: left;
     margin-left: 40%;
 }
+
+.smallImg {
+  width: 10rem;
+}
 </style>
