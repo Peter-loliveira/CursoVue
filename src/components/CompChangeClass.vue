@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button v-on:click="changeClass()">Mudar Classe</button>
-    <h1 :class="{ 'title-home': isHome }">Classe dinâmica</h1>
-    <p :class="{ 'title-home': isHome }">
+    <button @click="changeClass()">Mudar Classe</button>
+    <h1 :class = "['title', 'titleObliqueBold', {'title-home': isHome} ]">Classe dinâmica</h1>
+    <p :class="['title', {'title-homeP': isHome}]">
       Mussum Ipsum, cacilds vidis litro abertis. Per aumento de cachacis, eu
       reclamis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis
       que eu levo! Suco de cevadiss deixa as pessoas mais interessantis. Admodum
@@ -36,10 +36,20 @@ export default {
 .title {
   color: blue;
   font-size: 20px;
+  width: 90%;
+  margin-left: 5%;
+}
+.titleObliqueBold {
+  font-style: oblique;
+  font-weight: bold;
 }
 .title-home {
   color: green;
   font-size: 30px;
+}
+.title-homeP {
+  color: green;
+  font-size: 20px;
 }
 
 button {
