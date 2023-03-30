@@ -1,14 +1,22 @@
 <template>
-  <h1 class="titulos">V-Show</h1>
   <div class="cabecalho">
-    este é o componente <b> Header </b> importado</div>
-  <hr>
+    <h1 v-if = "$slots.title">
+      <slot name = 'title'/>
+    </h1>
+    <slot name = 'description'/>
+    <slot name = 'valor'/>
+    <slot />
+  </div>
 </template>
 
 <script>
 export default {
   name: "TheHeader",
+  mounted(){
+    console.log(this.$slots);
+  }
 };
+
 </script>
 
 <style>

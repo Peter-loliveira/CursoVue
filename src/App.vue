@@ -1,5 +1,18 @@
 <template>
-  <TheHeader v-if="showHeader" />
+  <CompLifeStages /> 
+  <TheHeader>
+      
+      <template v-slot:description>
+        <h3>Descição: Via Slot description</h3>
+      </template>
+      <template v-slot:valor>
+        <h3>Valor: Via Slot valor</h3>
+      </template>
+      
+      <p>Total: Via Slot default</p>
+      
+  </TheHeader>
+
   <CompVshow />
   <CompVbind />
   <CompVmodel />
@@ -20,6 +33,7 @@ import CompVmodel from "./components/CompVmodel.vue";
 import CompVshow from "./components/CompVshow.vue";
 import CompCondicionais from "./components/CompCondicionais.vue";
 import CompChangeClass from "./components/CompChangeClass.vue";
+import CompLifeStages from "./components/CompLifeStages.vue";
 
 export default {
   name: "App",
@@ -33,6 +47,7 @@ export default {
     CompVshow,
     CompCondicionais,
     CompChangeClass, 
+    CompLifeStages,
   },
   data() {
     return {
