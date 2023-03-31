@@ -1,4 +1,9 @@
 <template>
+  <div class="card">
+    Teste de Escopo
+  </div>
+
+  <CompBaseCard />
   <CompLifeStages /> 
   <TheHeader>
       
@@ -34,6 +39,7 @@ import CompVshow from "./components/CompVshow.vue";
 import CompCondicionais from "./components/CompCondicionais.vue";
 import CompChangeClass from "./components/CompChangeClass.vue";
 import CompLifeStages from "./components/CompLifeStages.vue";
+import CompBaseCard from "@/components/CompBaseCard.vue";
 
 export default {
   name: "App",
@@ -48,6 +54,7 @@ export default {
     CompCondicionais,
     CompChangeClass, 
     CompLifeStages,
+    CompBaseCard,
   },
   data() {
     return {
