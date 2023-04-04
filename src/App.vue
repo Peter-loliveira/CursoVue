@@ -1,4 +1,6 @@
 <template>
+  <BaseAlert variant = 'danger' text = 'Texto inserido por PROPS' />
+
   <div class="card">
     Teste de Escopo
   </div>
@@ -40,6 +42,7 @@ import CompCondicionais from "./components/CompCondicionais.vue";
 import CompChangeClass from "./components/CompChangeClass.vue";
 import CompLifeStages from "./components/CompLifeStages.vue";
 import CompBaseCard from "@/components/CompBaseCard.vue";
+import BaseAlert from "./components/BaseAlert.vue";
 
 export default {
   name: "App",
@@ -52,10 +55,11 @@ export default {
     CompVmodel,
     CompVshow,
     CompCondicionais,
-    CompChangeClass, 
+    CompChangeClass,
     CompLifeStages,
     CompBaseCard,
-  },
+    BaseAlert
+},
   data() {
     return {
       showHeader: true,
