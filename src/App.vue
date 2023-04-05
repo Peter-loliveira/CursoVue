@@ -1,5 +1,10 @@
 <template>
-  <BaseAlert variant = 'danger' text = 'Texto inserido por PROPS' />
+  <BaseAlert @close = "onClose()"
+    variant = 'danger' 
+    text = 'Texto inserido por PROPS'
+    v-if = 'showAlert'
+
+  />
 
   <div class="card">
     Teste de Escopo
@@ -60,18 +65,24 @@ export default {
     CompBaseCard,
     BaseAlert
 },
+  methods: {
+    onClose(){
+      this.showAlert = false
+    }
+
+  },
   data() {
     return {
       showHeader: true,
       showName: true,
+      showAlert: true,
     };
   },
-
 };
 
 </script>
 
-<style>
+<style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -81,17 +92,6 @@ export default {
   margin-top: 60px;
 }
 
-button {
-  font-size: 15px;
-  font-weight: bold;
-  color: #fff;
-  background-color: red;
-  border-color: #fff;
-  padding: 5px 10px;
-  border-radius: 20px;
-  width: 150px;
-  height: 40px;
-}
 
 button:hover {
   background-color: black;

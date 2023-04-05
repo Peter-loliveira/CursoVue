@@ -1,6 +1,9 @@
 <template>
     <div :class = "baseClass">
         {{ text }}
+        <button @click="onclick()">
+            X
+        </button>
     </div>
 </template>
 
@@ -14,12 +17,16 @@
                     this.variant ? `alert-${this.variant}` : ''
                 ]
             }
+        },
+        methods: {
+            onclick() {
+                this.$emit('close')   
+            }
         }
     }
 </script>
 
 <style scoped>
-
 .alert {
     padding: 5px;
     border-radius: 6px;
@@ -42,5 +49,10 @@
     background-color: rgb(238, 198, 52);
     color: #000;
     width: 30%;
+}
+
+div {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

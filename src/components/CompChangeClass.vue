@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .title {
   color: blue;
   font-size: 20px;
